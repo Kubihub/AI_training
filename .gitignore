@@ -1,0 +1,25 @@
+# Secrets: API keys and passwords never go into Git
+.env
+.env.*
+*.key
+*secret*
+
+# Generated slide decks: re-download them from the Learning Hub's
+# "Download Phase N slides" buttons. Delete this line to version them.
+slides/
+
+# Learner data and filled-in copies: keep personal data out of Git (Act 843)
+*learners*.csv
+*class-list*
+*-filled.pdf
+
+# Office, Windows and Mac clutter
+~$*
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Python
+__pycache__/
+.ipynb_checkpoints/
+.venv/

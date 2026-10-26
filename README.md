@@ -22,7 +22,6 @@ Training materials for the Youth in AI × Proficio Global Impact Foundation Data
 
 Keep `Learning-Hub-Guide.pdf` in the same folder as the HTML file: the hub's guide button looks for it there.
 
-The shared online version is at https://claude.ai/artifact/GArQmqKzi4abYEgpu1B6Ui (only people it has been shared with can open it).
 
 ## Slide decks
 

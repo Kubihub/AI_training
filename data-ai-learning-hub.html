@@ -2883,12 +2883,16 @@ async function saveGuidePdf() {
       return { ok: false, msg: "Couldn't save the guide (" + (code || "error") + ")." };
     }
   }
-  // Opened as a local file: browsers ignore "download" for files on disk, so open the PDF
-  // (kept in the same folder as this page) in a new tab, where the browser's save button keeps a copy.
+  // On a website (e.g. GitHub Pages) a normal download works. Opened as a local file, browsers
+  // ignore "download", so open the PDF (kept in the same folder as this page) in a new tab instead.
+  const local = location.protocol === "file:";
   const a = document.createElement("a");
-  a.href = GUIDE_PDF; a.target = "_blank"; a.rel = "noopener";
+  a.href = GUIDE_PDF;
+  if (local) { a.target = "_blank"; a.rel = "noopener"; } else { a.download = GUIDE_PDF; }
   document.body.appendChild(a); a.click(); a.remove();
-  return { ok: true, msg: "Opened the guide in a new tab. Use your browser's save button to keep a copy. If it doesn't open, keep " + GUIDE_PDF + " in the same folder as this page." };
+  return local
+    ? { ok: true, msg: "Opened the guide in a new tab. Use your browser's save button to keep a copy. If it doesn't open, keep " + GUIDE_PDF + " in the same folder as this page." }
+    : { ok: true, msg: "Downloading " + GUIDE_PDF + "." };
 }
 
 function GuideDownload({ variant, hint }) {
